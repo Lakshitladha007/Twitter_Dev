@@ -22,9 +22,10 @@ class TweetRepopsitory {
 
     async getwithComments(id){
          try {
-            const tweet = await Tweet.findById(id).populate({ path: 'comments' }); // generally, populate directly works when we have a general association, 
-            return tweet;                                                         // but here we kept an array of comments so we need to pass { path: "comments"}
-         } catch (error) {
+            const tweet = await Tweet.findById(id).populate({ path: 'comments' }).lean(); // generally, populate directly works when we have a general 
+            return tweet;                                                                 // association, but here we kept an array of comments so we 
+                                                                                          // need to pass { path: "comments"}
+            } catch (error) {
             console.log(error);
          }
     }
@@ -48,6 +49,15 @@ class TweetRepopsitory {
          } catch (error) {
             console.log(error);
          }
+    }
+
+    async getAll(offset, limit){
+      try {
+         const tweet= await Tweet.find().skip(offset).limit(limit);
+         return tweet;
+      } catch (error) {
+         console.log(error);
+      }
     }
 }
 

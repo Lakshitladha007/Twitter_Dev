@@ -19,7 +19,7 @@ const setUpAndStartServer= async () => {
         // tweet.comments.push(comment);
         // await tweet.save();
         // console.log(tweet);
-        const tweet= await repo.getwithComments('665318befe5260e3363c13a3');
+        const tweet= await repo.create({ content: "With hooks now"});
         console.log(tweet);
     })
      
