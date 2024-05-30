@@ -12,17 +12,7 @@ const setUpAndStartServer= async () => {
         console.log(`Server started at PORT: ${PORT}`);
         await connect();
         console.log("Mongo Db connected");
-        const repo = new TweetRepopsitory();
-        // const tweet = await repo.create({ content: "Tweet with a comment schema"});
-        // const comment = await Comment.create({content: "new comment"});
-        // console.log(tweet);
-        // tweet.comments.push(comment);
-        // await tweet.save();
-        // console.log(tweet);
-        const tweet= await repo.create({ content: "With hooks now"});
-        console.log(tweet);
-    })
-     
+    });
 }
 
 setUpAndStartServer();
