@@ -2,9 +2,6 @@ const express= require("express");
 const connect = require("./config/database")
 const app = express();
 
-const TweetRepopsitory = require('./respository/tweet-repository');
-const Comment = require('./models/comment');
-
 const { PORT } = require('./config/serverConfig');
 const setUpAndStartServer= async () => {
 
