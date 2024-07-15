@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from"mongoose"
 
 const tweetSchema = new mongoose.Schema({
     content: {
@@ -15,7 +15,7 @@ const tweetSchema = new mongoose.Schema({
 }, { timestamps: true});
 
 const Tweet = mongoose.model('Tweet', tweetSchema);
-module.exports = Tweet; 
+export default Tweet; 
 
 // Note: 
 // A tweet can have many hashtags, in the similar way a hashtag can have many tweets associated with it.

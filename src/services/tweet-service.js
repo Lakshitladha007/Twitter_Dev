@@ -1,5 +1,4 @@
-const Hashtag = require("../models/hashtags");
-const { TweetRepository, HashtagRepository } = require("../respository/index");
+import { TweetRepository, HashtagRepository } from '../repository/index.js';
 
 class Tweetservice{
     constructor() {
@@ -34,7 +33,7 @@ class Tweetservice{
     }
 }
 
-module.exports = Tweetservice;
+export default Tweetservice;
 
 /* (This is how the content of a tweet would look like)
 

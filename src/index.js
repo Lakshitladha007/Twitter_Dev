@@ -1,14 +1,18 @@
-const express= require("express");
-const connect = require("./config/database")
+import express from "express"
+import { connect } from "./config/database.js"
 const app = express();
 
-const { PORT } = require('./config/serverConfig');
+import Tweetservice from "./services/tweet-service.js"
 const setUpAndStartServer= async () => {
-
+const PORT=3000;
     app.listen(PORT, async()=>{
         console.log(`Server started at PORT: ${PORT}`);
         await connect();
         console.log("Mongo Db connected");
+        const service= new Tweetservice();
+        const tweet= await service.create({ content: "Done with #refactor"});
+        console.log(tweet);
+
     });
 }
 
