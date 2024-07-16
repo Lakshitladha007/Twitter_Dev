@@ -1,19 +1,18 @@
 import express from "express"
 import { connect } from "./config/database.js"
+import apiRoutes from "./routes/index.js"
+import bodyParser from "body-parser";
+
 const app = express();
 
-import Tweetservice from "./services/tweet-service.js"
-const setUpAndStartServer= async () => {
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use('/api', apiRoutes);
+
 const PORT=3000;
-    app.listen(PORT, async()=>{
-        console.log(`Server started at PORT: ${PORT}`);
-        await connect();
-        console.log("Mongo Db connected");
-        const service= new Tweetservice();
-        const tweet= await service.create({ content: "#CoDE is #Love??"});;
-        console.log(tweet);
-
-    });
-}
-
-setUpAndStartServer();
+app.listen(PORT, async()=>{
+    console.log(`Server started at PORT: ${PORT}`);
+    await connect();
+    console.log("Mongo Db connected"); 
+});
