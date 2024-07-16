@@ -12,7 +12,9 @@ class Tweetservice{
         tags = tags.map(tag => {    // removing '#' from each hashtag
              return tag.substring(1);
         });
-
+        tags= tags.map(tag =>{
+            return tag.toLowerCase();
+        })
         const tweet = await this.tweetRepository.create(data);  // this fxn is used to create 'tweet'
 
         let alreadyPresentTags= await this.hashtagRepository.findByName(tags); //  here we get an array of tags which are already present in db

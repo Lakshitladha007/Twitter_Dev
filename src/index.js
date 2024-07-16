@@ -10,7 +10,7 @@ const PORT=3000;
         await connect();
         console.log("Mongo Db connected");
         const service= new Tweetservice();
-        const tweet= await service.create({ content: "Done with #refactor"});
+        const tweet= await service.create({ content: "#CoDE is #Love??"});;
         console.log(tweet);
 
     });
