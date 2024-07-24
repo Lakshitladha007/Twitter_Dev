@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const likeSchema = new mongoose.Schema({ 
-    onModel: {
+    onModel: {  // this property indicates which model user is liking(Either liking a tweet or a comment)
         type: String,
         required: true,
         enum: ["Tweet", "Comment"]

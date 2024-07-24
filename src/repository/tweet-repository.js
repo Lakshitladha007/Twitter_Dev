@@ -26,9 +26,9 @@ class TweetRepository extends CrudRepository {
          }
     }
  
-    // This 'update' fxn bydefault returns the ' old document ' even after updating, although in database we have updated object.
-    // To get updated document, we add property { new: true } with the fxn.
-    // If we don't pass { new: true }, we will get access to old document
+   // This 'update' fxn bydefault returns the ' old document ' even after updating, although in database we have updated object.
+   // To get updated document, we add property { new: true } with the fxn.
+   // If we don't pass { new: true }, we will get access to old document
    //  async update(tweetId, data){
    //      try {
    //          const tweet= await Tweet.findByIdAndUpdate(tweetId, data, {new : true});
@@ -47,6 +47,16 @@ class TweetRepository extends CrudRepository {
          console.log(error);
       }
     }
+
+    async find(id){
+      try {
+         const tweet = await Tweet.findById(id).populate({ path: 'likes'});
+         return tweet;
+      } catch (error) {
+         console.log(error);
+      }
+    }
+
 }
 
 export default TweetRepository;
