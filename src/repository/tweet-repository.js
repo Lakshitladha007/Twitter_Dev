@@ -18,10 +18,11 @@ class TweetRepository extends CrudRepository {
 
     async getwithComments(id){
          try {
-            const tweet = await Tweet.findById(id).populate({ path: 'comments' }).lean(); // generally, populate directly works when we have a general 
-            return tweet;                                                                 // association, but here we kept an array of comments so we 
-                                                                                          // need to pass { path: "comments"}
-            } catch (error) {
+            const tweet = await Tweet.findById(id).populate({ path: 'comments', populate : { path : 'comments' }  }).lean(); 
+            // generally, populate directly works when we have a general association, but here we kept an array of comments so we 
+            // need to pass { path: "comments"}
+            return tweet;                                                                 
+         } catch (error) {
             console.log(error);
          }
     }
