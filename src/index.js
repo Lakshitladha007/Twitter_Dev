@@ -1,15 +1,21 @@
 import express from "express"
-import { connect } from "./config/database.js"
-import apiRoutes from "./routes/index.js"
 import bodyParser from "body-parser";
+import passport from "passport";
 
-import { UserRepository, TweetRepository } from "./repository/index.js";
-import LikeService from "./services/like-service.js";
+import { connect } from "./config/database.js"
+
+import { passportAuth } from "./config/jwt-middleware.js";
+
+import apiRoutes from "./routes/index.js"
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(passport.initialize());
+passportAuth(passport);
+
 
 app.use('/api', apiRoutes);
 
