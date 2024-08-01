@@ -1,6 +1,7 @@
 import express from "express"
 import bodyParser from "body-parser";
 import passport from "passport";
+import dotenv from 'dotenv';
 
 import { connect } from "./config/database.js"
 
@@ -20,6 +21,7 @@ passportAuth(passport);
 app.use('/api', apiRoutes);
 
 const PORT=3000;
+
 app.listen(PORT, async()=>{
     console.log(`Server started at PORT: ${PORT}`);
     await connect();
