@@ -24,3 +24,14 @@
 - User authentication
 
 - Every tweet might be having a hashtag
+
+
+
+
+
+
+
+
+> Important Links:
+  - ES6 in jest 
+    src: "https://how-to.dev/how-to-set-up-jest-for-es-module"
